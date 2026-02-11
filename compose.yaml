@@ -13,9 +13,9 @@ x-depends-on-configurator: &depends_on_configurator
 
 x-volumes-configurator: &volumes_configurator
   volumes:
-    - /root/production/docker-compose/services/erpnext-1/sites:/home/frappe/frappe-bench/sites
-    - /root/production/docker-compose/services/erpnext-1/logs:/home/frappe/frappe-bench/logs
-    - /root/production/docker-compose/services/erpnext-1/assets:/home/frappe/assets
+    - sites:/home/frappe/frappe-bench/sites
+    - logs:/home/frappe/frappe-bench/logs
+    - assets:/home/frappe/assets
 
 x-backend-defaults: &backend_defaults
   <<: [*depends_on_configurator, *customizable_image, *volumes_configurator]
@@ -93,4 +93,20 @@ services:
 # ERPNext requires local assets access (Frappe does not)
 volumes:
   sites:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/production/docker-compose/services/erpnext-1/sites
   logs:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/production/docker-compose/services/erpnext-1/logs
+  assets:
+    driver: local
+    driver_opts:
+      type: none
+      o: bind
+      device: /root/production/docker-compose/services/erpnext-1/assets
