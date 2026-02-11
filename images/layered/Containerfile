@@ -1,4 +1,4 @@
-ARG FRAPPE_BRANCH=version-15
+ARG FRAPPE_BRANCH=version-16
 
 FROM frappe/build:${FRAPPE_BRANCH} AS builder
 
