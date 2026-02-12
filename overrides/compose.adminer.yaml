@@ -3,8 +3,8 @@ services:
     image: adminer
     restart: always
     depends_on:
-      db:
-        condition: service_healthy
+      configurator:
+        condition: service_completed_successfully
     networks:
       - bench-network
       - mariadb-network
