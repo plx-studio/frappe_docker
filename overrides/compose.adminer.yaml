@@ -6,7 +6,7 @@ services:
       configurator:
         condition: service_completed_successfully
     networks:
-      - bench-network
+      - traefik-public
       - mariadb-network
     labels:
       - traefik.enable=true
