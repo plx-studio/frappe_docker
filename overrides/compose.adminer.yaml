@@ -28,4 +28,7 @@ services:
       - traefik.http.routers.adminer-https.tls.certresolver=le
     environment:
       ADMINER_PLUGINS: "tables-filter tinymce"
-      ADMINER_DEFAULT_SERVER: db
+      ADMINER_DEFAULT_SERVER: ${DB_HOST:-db}
+      ADMINER_DEFAULT_USER: ${DB_USER:-root}
+      ADMINER_DEFAULT_PASSWORD: ${DB_PASSWORD:-changeit}
+      ADMINER_DEFAULT_TYPE: ${DB_TYPE:-mysql}
